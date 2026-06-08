@@ -4,4 +4,12 @@ export const products = [
   { id: 3, name: "Fresh Spinach", price: 1.20, category: "Vegetables", image: "/spinach.jpg", stock: 15 },
   // Add more items like pantry staples, snacks, etc.
 ];
+// Inside CartProvider
+useEffect(() => {
+  const savedCart = localStorage.getItem('vsp_cart');
+  if (savedCart) setCart(JSON.parse(savedCart));
+}, []);
 
+useEffect(() => {
+  localStorage.setItem('vsp_cart', JSON.stringify(cart));
+}, [cart]);
